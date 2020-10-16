@@ -1,10 +1,11 @@
+const { fromDatabaseToEntity } = require('../utilities/mapper/carMapper');
+
 module.exports = class CarRepository {
   /**
    * @param  {import("better-sqlite3").Database} databaseAdapter
    */
   constructor(databaseAdapter) {
     this.databaseAdapter = databaseAdapter;
-    console.log(process.cwd() + '/data/database.db');
   }
 
   /**
@@ -35,7 +36,11 @@ module.exports = class CarRepository {
     );
 
     const id = result.lastInsertRowid;
+    return this.getById(id);
+  }
 
-    return;
+  getById(id) {
+    const car = this.databaseAdapter.prepare(`SELECT * FROM cars WHERE id = ?`).get(id);
+    return fromDatabaseToEntity(car);
   }
 };

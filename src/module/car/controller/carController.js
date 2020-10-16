@@ -1,4 +1,4 @@
-const fromDataToEntity = require('../utilities/mapper/carMapper');
+const { fromDataToEntity } = require('../utilities/mapper/carMapper');
 
 module.exports = class CarController {
   /**
@@ -38,8 +38,10 @@ module.exports = class CarController {
    * @param  {import("express").Response} res
    */
   save(req, res) {
-    const car = fromDataToEntity(req.body);
-    this.CarService.save(car);
+    const data = fromDataToEntity(req.body);
+    const car = this.CarService.save(data);
+    console.log(car);
+
     res.redirect('/');
   }
 };
