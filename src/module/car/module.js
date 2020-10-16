@@ -1,2 +1,7 @@
-import { ClubController } from './controller/clubController';
-import { ClubService } from './service/clubService';
+const CarController = require("./controller/carController")
+const CarService = require("./service/carService")
+
+module.exports = {
+    CarController,
+    CarService
+}

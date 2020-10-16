@@ -1,6 +1,6 @@
-module.exports = class ClubController {
-  constructor(ClubService) {
-    this.ClubService = ClubService;
+module.exports = class CarController {
+  constructor(CarController) {
+    this.CarController = CarController;
   }
 
   configureRoutes(app) {
