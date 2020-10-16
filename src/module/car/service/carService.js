@@ -1,1 +1,1 @@
-module.exports = class CarController { };
+module.exports = class CarService { };

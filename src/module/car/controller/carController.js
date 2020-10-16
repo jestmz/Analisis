@@ -4,7 +4,8 @@ module.exports = class CarController {
   }
 
   configureRoutes(app) {
-    // index
+
+    app.get("/", this.index.bind(this))
     // get form
     // post form
     //  maybe 404?
@@ -12,5 +13,8 @@ module.exports = class CarController {
     // delete
   }
 
-  // index
+  index(req, res) {
+    res.render('car/views/index.html');
+  }
+
 };
