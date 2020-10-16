@@ -40,5 +40,6 @@ module.exports = class CarController {
   save(req, res) {
     const car = fromDataToEntity(req.body);
     this.CarService.save(car);
+    res.redirect('/');
   }
 };

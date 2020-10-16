@@ -7,6 +7,6 @@ module.exports = class CarService {
   }
 
   save(car) {
-    this.CarRepository.create(car);
+    return this.CarRepository.create(car);
   }
 };
