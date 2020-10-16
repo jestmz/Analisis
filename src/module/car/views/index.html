@@ -1,10 +1,9 @@
 {% extends 'view/layout.html' %} {% block body %}
 
-<h1 class="title">Index in construction</h1>
 
-<a class="button" href="/car/create">Add new Car</a>
+<a class="button is-large is-link is-light" href="/car/create">Add new Car</a>
 
-<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+<table class="table is-striped is-narrow is-hoverable is-fullwidth ">
   <tr>
     <th>Id</th>
     <th>Brand</th>
@@ -16,17 +15,19 @@
     <th>Number of Passengers</th>
   </tr>
   <tr>
+      {% for car in data.cars %}
 
-    {% for car in data.cars %}
   <tr>
     <td>{{car.id}}</td>
     <td>{{car.brand}}</td>
     <td>{{car.model}}</td>
     <td>{{car.year}}</td>
-  <td>{{car.kms}}</td>
+     <td>{{car.kms}}</td>
     <td>{{car.color}}</td>
-    <td>{{car.airConditioning}}</td>
+    <td>{{car.airConditioning}}</td>   <!-- Works in air_conditioning .... -->
     <td>{{car.passengers}}</td>
+    <td><a href="/car/edit" class="button is-info is-fullwidth">Edit</a></td>
+    <td><a href="/car/delete" class="button is-danger is-fullwidth">Delete</a></td>
   </tr>
   {% endfor %}
 
