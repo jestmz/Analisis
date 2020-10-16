@@ -38,6 +38,36 @@ module.exports = class CarRepository {
     const id = result.lastInsertRowid;
     return this.getById(id);
   }
+  /**
+   * @param  {import("../utilities/entity/carEntity")} car
+   */
+  update(car) {
+    const id = car.id;
+    const carUpdate = this.databaseAdapter.prepare(`
+      UPDATE cars SET
+      brand = ?,
+      model = ?,
+      year = ?,
+      kms = ?,
+      color = ?,
+      air_conditioning = ?,
+      passengers = ?
+      WHERE id = ?
+    `);
+
+    const params = [
+      car.brand,
+      car.model,
+      car.year,
+      car.kms,
+      car.color,
+      car.air_conditioning,
+      car.passengers,
+      car.id,
+    ];
+
+    carUpdate.run(params);
+  }
 
   getById(id) {
     const car = this.databaseAdapter.prepare(`SELECT * FROM cars WHERE id = ?`).get(id);

@@ -7,7 +7,11 @@ module.exports = class CarService {
   }
 
   save(car) {
-    return this.CarRepository.create(car);
+    if (car.id) {
+      return this.CarRepository.update(car);
+    } else {
+      return this.CarRepository.create(car);
+    }
   }
 
   getAll() {
