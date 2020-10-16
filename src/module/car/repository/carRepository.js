@@ -44,6 +44,12 @@ module.exports = class CarRepository {
     return fromDatabaseToEntity(car);
   }
 
+  delete(car) {
+    const id = car.id;
+    this.databaseAdapter.prepare(`DELETE FROM cars WHERE id = ?`).run(id);
+    return true;
+  }
+
   getAll() {
     const cars = this.databaseAdapter.prepare(`SELECT * FROM cars`).all();
     return cars.map((car) => fromDatabaseToEntity(car));

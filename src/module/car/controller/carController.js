@@ -11,12 +11,13 @@ module.exports = class CarController {
    * @param  {import("express").Application} app
    */
   configureRoutes(app) {
-    app.get('/', this.index.bind(this));
-    app.get('/car/create', this.create.bind(this));
-    app.post('/car/save', this.save.bind(this));
-    //  maybe 404?
-    // view
-    // delete
+    const ROUTE = '/car';
+
+    app.get(`${ROUTE}`, this.index.bind(this));
+    app.get(`${ROUTE}/create`, this.create.bind(this));
+    app.post(`${ROUTE}/save`, this.save.bind(this));
+    app.get(`${ROUTE}/edit/:id`, this.create.bind(this));
+    app.get(`${ROUTE}/delete/:id`, this.delete.bind(this));
   }
   /**
    * @param  {import("express").Request} req
@@ -42,5 +43,13 @@ module.exports = class CarController {
     const data = fromDataToEntity(req.body);
     const car = this.CarService.save(data);
     res.redirect('/');
+  }
+
+  delete(req, res) {
+    const { id } = req.params;
+    const car = this.CarService.getById(id);
+    this.CarService.delete(car);
+
+    res.redirect('/car');
   }
 };

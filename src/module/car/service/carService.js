@@ -13,4 +13,12 @@ module.exports = class CarService {
   getAll() {
     return this.CarRepository.getAll();
   }
+
+  getById(id) {
+    return this.CarRepository.getById(id);
+  }
+
+  delete(car) {
+    return this.CarRepository.delete(car);
+  }
 };
