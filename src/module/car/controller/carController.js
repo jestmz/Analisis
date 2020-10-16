@@ -24,7 +24,6 @@ module.exports = class CarController {
    */
   index(req, res) {
     const cars = this.CarService.getAll();
-    console.log(cars);
     res.render('car/views/index.html', { data: { cars } });
   }
   /**
