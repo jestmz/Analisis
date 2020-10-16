@@ -26,8 +26,8 @@
     <td>{{car.color}}</td>
     <td>{{car.airConditioning}}</td>   <!-- Works in air_conditioning .... -->
     <td>{{car.passengers}}</td>
-    <td><a href="/car/edit" class="button is-info is-fullwidth">Edit</a></td>
-    <td><a href="/car/delete" class="button is-danger is-fullwidth">Delete</a></td>
+    <td><a href="/car/edit/:{{car.id}}" class="button is-info is-fullwidth">Edit</a></td>
+    <td><a href="/car/delete/:{{car.id}}" class="button is-danger is-fullwidth">Delete</a></td>
   </tr>
   {% endfor %}
 
