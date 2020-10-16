@@ -16,8 +16,8 @@ app.use('/public', express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 initCarModule(container, app)
-
-
+const CarController = container.get("CarController")
+app.get("/", CarController.index.bind(CarController))
 
 
 app.listen(PORT, () => {
