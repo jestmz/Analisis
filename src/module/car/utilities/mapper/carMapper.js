@@ -1,4 +1,4 @@
-const CarEntity = require('../entity/carEntity');
+const Car = require('../entity/carEntity');
 
 module.exports = { fromDataToEntity, fromDatabaseToEntity };
 
@@ -16,5 +16,5 @@ function fromDatabaseToEntity({
   air_conditioning: airConditioning,
   passengers,
 }) {
-  return new CarEntity(id, brand, model, year, kms, color, airConditioning, passengers);
+  return new Car(id, brand, model, year, kms, color, airConditioning, passengers);
 }
