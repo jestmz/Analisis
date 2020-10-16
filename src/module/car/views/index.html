@@ -1,5 +1,21 @@
 {% extends 'view/layout.html' %} {% block body %}
 
+  {% for message in messages %}
+    <div class="container">
+  <div class="notification is-primary is-size-4 has-text-centered">
+   {{message}}
+  </div>
+</div>
+  {% endfor %}
+
+{% for error in errors %}
+    <div class="container">
+  <div class="notification is-danger is-size-5 has-text-centered">
+   {{error}}
+  </div>
+</div>
+  {% endfor %}
+
 
 <a class="button is-large is-link is-light" href="/car/create">Add new Car</a>
 
@@ -9,7 +25,7 @@
     <th>Brand</th>
     <th>Model</th>
     <th>Year</th>
-  <th>Kilometers</th>
+    <th>Kilometers</th>
     <th>Color</th>
     <th>Air Conditioning</th>
     <th>Number of Passengers</th>

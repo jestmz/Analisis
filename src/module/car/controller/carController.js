@@ -25,7 +25,11 @@ module.exports = class CarController {
    */
   index(req, res) {
     const cars = this.CarService.getAll();
-    res.render('car/views/index.html', { data: { cars } });
+    const { messages, errors } = req.session;
+    res.render('car/views/index.html', { data: { cars }, messages, errors });
+
+    req.session.messages = [];
+    req.session.errors = [];
   }
   /**
    * @param  {import("express").Request} req
@@ -40,22 +44,40 @@ module.exports = class CarController {
    * @param  {import("express").Response} res
    */
   save(req, res) {
-    const data = fromDataToEntity(req.body);
-    const car = this.CarService.save(data);
-    res.redirect('/');
+    try {
+      const data = fromDataToEntity(req.body);
+      const car = this.CarService.save(data);
+
+      req.session.messages = [`Car with Id ${car.id} has been created`];
+      res.redirect('/');
+    } catch (e) {
+      req.session.errors = [e.message, e.stack];
+      res.redirect('/');
+    }
   }
 
   delete(req, res) {
-    const { id } = req.params;
-    const car = this.CarService.getById(id);
-    this.CarService.delete(car);
+    try {
+      const { id } = req.params;
+      const car = this.CarService.getById(id);
+      this.CarService.delete(car);
+      req.session.messages = [`Car with Id ${id} has been deleted`];
+    } catch (e) {
+      req.session.errors = [e.message, e.stack];
+    }
     res.redirect('/car');
   }
 
   edit(req, res) {
-    const { id } = req.params;
-    const car = this.CarService.getById(id);
-    console.log(car);
-    res.render('car/views/form.html', { data: { car } });
+    try {
+      const { id } = req.params;
+      const car = this.CarService.getById(id);
+      req.session.messages = [`Car with Id ${car.id} has been updated`];
+
+      res.render('car/views/form.html', { data: { car } });
+    } catch (e) {
+      req.session.errors = [e.message, e.stack];
+      res.redirect('/');
+    }
   }
 };
