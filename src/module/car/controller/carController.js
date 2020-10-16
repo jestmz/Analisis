@@ -6,7 +6,7 @@ module.exports = class CarController {
   configureRoutes(app) {
 
     app.get("/", this.index.bind(this))
-    // get form
+    app.get("/car/create", this.create.bind(this))
     // post form
     //  maybe 404?
     // view
@@ -17,4 +17,7 @@ module.exports = class CarController {
     res.render('car/views/index.html');
   }
 
+  create(req, res) {
+    res.render("car/views/form.html")
+  }
 };

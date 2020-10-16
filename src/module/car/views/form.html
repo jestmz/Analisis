@@ -1,0 +1,60 @@
+{% extends 'view/layout.html' %}
+
+{% block body %}
+<div class="container">
+    <a href="/" class="button is-link title">Go Home</a>
+
+    <form method="POST" action="/club/save">
+
+        <div class="field">
+            <label class="label">Brand</label>
+            <input class="input" type="text" placeholder="Brand" name="brand" required />
+        </div>
+
+        <div class="field">
+            <label class="label">Model</label>
+            <input class="input" type="text" placeholder="Model" name="model" required />
+        </div>
+
+        <div class="field">
+            <label class="label">Year</label>
+            <input class="input" type="text" placeholder="address" name="year" required />
+        </div>
+
+        <div class="field">
+            <label class="label">Kms</label>
+            <input class="input" type="text" placeholder="Kms" name="kms" required />
+        </div>
+
+        <div class="field">
+            <label class="label">Color</label>
+            <input class="input" type="text" placeholder="Color" name="color" required />
+        </div>
+
+        <div class="field">
+            <label class="label">Has Air condioning?</label>
+            <label>
+                <input type="radio" class="" name="air-conditioning">
+                Yes
+            </label>
+            <label>
+                <input type="radio" class="" name="air-conditioning">
+                No
+            </label>
+        </div>
+
+        <div class="field">
+            <label class="label">Number of pax</label>
+            <input class="input" type="text" placeholder="Number of pax" name="pax" required />
+        </div>
+
+        <div class="field">
+            <label class="label">Venue</label>
+            <input class="input" type="text" placeholder="Venue" name="venue" required />
+        </div>
+        <div>
+            <input type="submit" class="button is-primary is-light is-fullwidth" value="Create Car " />
+        </div>
+    </form>
+</div>
+{% endblock %}
