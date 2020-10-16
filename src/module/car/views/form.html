@@ -1,39 +1,41 @@
 {% extends 'view/layout.html' %}
 
 {% block body %}
+{% set car = data.car %}
+
 <div class="container">
     <a href="/" class="button is-link title">Go Home</a>
 
     <form method="POST" action="/car/save">
 
         <div class="field">
-            <input class="input" type="hidden" placeholder="id" name="id"  required />
+            <input class="input" type="hidden" value="{{car.id}}" name="id"/>
         </div>
 
 
         <div class="field">
             <label class="label">Brand</label>
-            <input class="input" type="text" placeholder="Brand" name="brand" required />
+            <input class="input" type="text" placeholder="Brand" name="brand" value="{{car.brand}}" required />
         </div>
 
         <div class="field">
             <label class="label">Model</label>
-            <input class="input" type="text" placeholder="Model" name="model" required />
+            <input class="input" type="text" placeholder="Model" name="model" value="{{car.model}}" required />
         </div>
 
         <div class="field">
             <label class="label">Year</label>
-            <input class="input" type="text" placeholder="address" name="year" required />
+            <input class="input" type="text" placeholder="address" name="year"  value="{{car.year}}" required />
         </div>
 
         <div class="field">
             <label class="label">Kms</label>
-            <input class="input" type="text" placeholder="Kms" name="kms" required />
+            <input class="input" type="text" placeholder="Kms" name="kms" value="{{car.kms}}" required />
         </div>
 
         <div class="field">
             <label class="label">Color</label>
-            <input class="input" type="text" placeholder="Color" name="color" required />
+            <input class="input" type="text" placeholder="Color" name="color" value="{{car.color}}" required />
         </div>
 
         <div class="field">
@@ -50,7 +52,7 @@
 
         <div class="field">
             <label class="label">Number of passengers</label>
-            <input class="input" type="number" placeholder="Number of pax" name="passengers" required />
+            <input class="input" type="number" placeholder="Number of pax" name="passengers" value="{{car.passengers}}" required />
         </div>
 
         <div>
