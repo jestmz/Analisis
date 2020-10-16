@@ -3,8 +3,8 @@ const { CarController, CarService } = require("../module/car/module")
 
 function addCarModuleDefinitions(container) {
     container.addDefinitions({
-        CarController: object(CarController).construct("CarService"),
-        CarService: object(CarService)
+        CarController: object(CarController).construct(get("CarService")),
+        CarService: object(CarService).construct()
     })
 }
 

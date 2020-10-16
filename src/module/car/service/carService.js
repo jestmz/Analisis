@@ -1,1 +1,7 @@
-module.exports = class CarService { };
+module.exports = class CarService {
+    constructor() { }
+
+    save(car) {
+        console.log(car)
+    }
+};
