@@ -43,4 +43,9 @@ module.exports = class CarRepository {
     const car = this.databaseAdapter.prepare(`SELECT * FROM cars WHERE id = ?`).get(id);
     return fromDatabaseToEntity(car);
   }
+
+  getAll() {
+    const statement = this.databaseAdapter.prepare(`SELECT * FROM cars`).all();
+    console.log(statement);
+  }
 };

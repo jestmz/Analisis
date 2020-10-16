@@ -9,4 +9,8 @@ module.exports = class CarService {
   save(car) {
     return this.CarRepository.create(car);
   }
+
+  getAll() {
+    return this.CarRepository.getAll();
+  }
 };

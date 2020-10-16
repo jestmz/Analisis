@@ -23,7 +23,9 @@ module.exports = class CarController {
    * @param  {import("express").Response} res
    */
   index(req, res) {
-    res.render('car/views/index.html');
+    const cars = this.CarService.getAll();
+    console.log(cars);
+    res.render('car/views/index.html', { data: { cars } });
   }
   /**
    * @param  {import("express").Request} req
@@ -40,8 +42,6 @@ module.exports = class CarController {
   save(req, res) {
     const data = fromDataToEntity(req.body);
     const car = this.CarService.save(data);
-    console.log(car);
-
     res.redirect('/');
   }
 };
