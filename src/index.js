@@ -16,6 +16,10 @@ app.use('/public', express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 initCarModule(container, app);
+
+/**
+ * @type  {import("./module/car/controller/carController")} CarController
+ */
 const CarController = container.get('CarController');
 app.get('/', CarController.index.bind(CarController));
 
