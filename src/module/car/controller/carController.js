@@ -14,7 +14,6 @@ module.exports = class CarController {
     app.get('/', this.index.bind(this));
     app.get('/car/create', this.create.bind(this));
     app.post('/car/save', this.save.bind(this));
-    // post form
     //  maybe 404?
     // view
     // delete
