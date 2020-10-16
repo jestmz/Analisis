@@ -1,9 +1,9 @@
 module.exports = class CarService {
-    constructor(CarRepository) {
-        this.CarRepository = CarRepository
-    }
+  constructor(CarRepository) {
+    this.CarRepository = CarRepository;
+  }
 
-    save(car) {
-        this.CarRepository.create(car)
-    }
+  save(car) {
+    this.CarRepository.create(car);
+  }
 };
