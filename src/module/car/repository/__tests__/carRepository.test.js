@@ -20,7 +20,7 @@ test('Create generates and id correctly ', () => {
     year: 'year',
     kms: 'kms',
     color: 'color',
-    air_conditioning: 'yep',
+    airConditioning: 'yep',
     passengers: '1',
   };
 
@@ -37,7 +37,7 @@ test('Delete works when called', () => {
     year: 'year',
     kms: 'kms',
     color: 'color',
-    air_conditioning: 'yep',
+    airConditioning: 'yep',
     passengers: '1',
   };
 
@@ -59,7 +59,7 @@ test('Get All returns an array with entities', () => {
       year: 'year',
       kms: 'kms',
       color: 'color',
-      air_conditioning: 'yep',
+      airConditioning: 'yep',
       passengers: '1',
     })
   );
