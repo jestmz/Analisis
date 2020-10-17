@@ -67,6 +67,8 @@ module.exports = class CarRepository {
     ];
 
     carUpdate.run(params);
+
+    return this.getById(id);
   }
 
   getById(id) {

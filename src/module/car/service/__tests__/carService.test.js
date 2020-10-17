@@ -26,7 +26,7 @@ test('If car has an Id at saving, calls update method of the repository ', () =>
 });
 
 test('If car has not an id, then calls create method of the repository ', () => {
-  const FAKE_CAR = new Car();
+  const FAKE_CAR = new Car({ id: undefined });
   Service.save(FAKE_CAR);
 
   expect(FAKE_CAR.id).toBeUndefined();
@@ -43,7 +43,7 @@ test('Get by Id calls repository method once', () => {
 });
 
 test('Deletes calls repository method once', () => {
-  const FAKE_CAR = new Car();
+  const FAKE_CAR = new Car({ id: 1 });
 
   Service.delete(FAKE_CAR);
   expect(repositoryMock.delete).toHaveBeenCalledTimes(1);

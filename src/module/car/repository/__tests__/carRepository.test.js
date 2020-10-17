@@ -47,3 +47,20 @@ test('Delete works when called', () => {
   Repository.delete(car);
   expect(Repository.getById(1)).toBeUndefined();
 });
+
+test('Get All returns an array with entities', () => {
+  const Repository = new CarRepository(mockDb);
+  expect(Repository.getAll()).toEqual([]);
+  const FAKE_CAR = Repository.create(
+    new Car({
+      id: 1,
+      brand: 'brand',
+      model: 'model',
+      year: 'year',
+      kms: 'kms',
+      color: 'color',
+      air_conditioning: 'yep',
+      passengers: '1',
+    })
+  );
+});
