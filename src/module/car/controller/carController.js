@@ -45,10 +45,11 @@ module.exports = class CarController {
    */
   save(req, res) {
     try {
-      const data = fromDataToEntity(req.body);
-      const car = this.CarService.save(data);
-
-      req.session.messages = [`Car with Id ${car.id} has been created`];
+      const bodyCar = fromDataToEntity(req.body);
+      const car = this.CarService.save(bodyCar);
+      if (!bodyCar.id) {
+        req.session.messages = [`Car with Id ${car.id} has been created`];
+      }
       res.redirect('/');
     } catch (e) {
       req.session.errors = [e.message, e.stack];
