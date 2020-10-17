@@ -87,6 +87,7 @@ module.exports = class CarRepository {
 
   getAll() {
     const cars = this.databaseAdapter.prepare(`SELECT * FROM cars`).all();
+    console.log(cars);
     return cars.map((car) => fromDatabaseToEntity(car));
   }
 };
