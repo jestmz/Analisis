@@ -9,7 +9,7 @@
     <form method="POST" action="/car/save">
 
         <div class="field">
-            <input class="input" type="hidden" value="{{car.id}}" name="id"/>
+            <input class="input" type="hidden" value="{{car.id}}" name="id" readonly/>
         </div>
 
 
@@ -41,7 +41,7 @@
         <div class="field">
             <label class="label">Has Air conditioning?</label>
             <label>
-                <input type="radio" class="" name="air_conditioning" value="yes" required>
+                <input type="radio" class="" name="air_conditioning" value="yes" required checked>
                 Yes
             </label>
             <label>
