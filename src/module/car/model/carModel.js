@@ -29,7 +29,7 @@ module.exports = class CarModel extends Model {
         color: {
           type: DataTypes.STRING,
         },
-        air_conditioning: {
+        airConditioning: {
           type: DataTypes.STRING,
         },
         passengers: {

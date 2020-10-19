@@ -16,7 +16,9 @@ app.use('/public', express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 const mainDb = container.get('Sequelize');
+
 mainDb.sync();
+
 const session = container.get('Session');
 app.use(session);
 initCarModule(container, app);

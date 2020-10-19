@@ -21,7 +21,13 @@ module.exports = class CarRepository {
   /**
    * @param  {import("../utilities/entity/carEntity")} car
    */
-  update(car) {}
+  async update(car) {
+    let carModel = await this.carModel.findOne({ where: { id: car.id } });
+    carModel = this.carModel.build(car, { isNewRecord: false });
+    carModel = await carModel.save();
+
+    return fromModelToEntity(carModel);
+  }
 
   async getById(id) {
     const carModel = await this.carModel.findOne({ where: { id } });

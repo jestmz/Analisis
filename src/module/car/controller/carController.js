@@ -23,8 +23,8 @@ module.exports = class CarController {
    * @param  {import("express").Request} req
    * @param  {import("express").Response} res
    */
-  index(req, res) {
-    const cars = this.CarService.getAll();
+  async index(req, res) {
+    const cars = await this.CarService.getAll();
     const { messages, errors } = req.session;
     res.render('car/views/index.html', { data: { cars }, messages, errors });
 
@@ -43,10 +43,10 @@ module.exports = class CarController {
    * @param  {import("express").Request} req
    * @param  {import("express").Response} res
    */
-  save(req, res) {
+  async save(req, res) {
     try {
       const bodyCar = fromDataToEntity(req.body);
-      const car = this.CarService.save(bodyCar);
+      const car = await this.CarService.save(bodyCar);
       if (!bodyCar.id) {
         req.session.messages = [`Car with Id ${car.id} has been created`];
       }
@@ -57,10 +57,10 @@ module.exports = class CarController {
     }
   }
 
-  delete(req, res) {
+  async delete(req, res) {
     try {
       const { id } = req.params;
-      const car = this.CarService.getById(id);
+      const car = await this.CarService.getById(id);
       this.CarService.delete(car);
       req.session.messages = [`Car with Id ${id} has been deleted`];
     } catch (e) {
@@ -69,10 +69,10 @@ module.exports = class CarController {
     res.redirect('/car');
   }
 
-  edit(req, res) {
+  async edit(req, res) {
     try {
       const { id } = req.params;
-      const car = this.CarService.getById(id);
+      const car = await this.CarService.getById(id);
       req.session.messages = [`Car with Id ${car.id} has been updated`];
 
       res.render('car/views/form.html', { data: { car } });
