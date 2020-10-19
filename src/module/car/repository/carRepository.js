@@ -23,17 +23,17 @@ module.exports = class CarRepository {
    */
   update(car) {}
 
-  getById(id) {}
-
-  async delete(car) {
-    return Boolean(
-      await this.carModel.destroy({
-        where: {
-          id: car.id,
-        },
-      })
-    );
+  async getById(id) {
+    const carModel = await this.carModel.findOne({ where: { id } });
+    return fromModelToEntity(carModel);
   }
 
-  async getAll() {}
+  async delete(car) {
+    console.log(car);
+    return Boolean(await this.carModel.destroy({ where: { id: car.id } }));
+  }
+  async getAll() {
+    const cars = await this.carModel.findAll();
+    return cars.map(fromModelToEntity);
+  }
 };
