@@ -6,7 +6,7 @@ module.exports = class CarService {
     this.CarRepository = CarRepository;
   }
 
-  save(car) {
+  async save(car) {
     if (car.id) {
       return this.CarRepository.update(car);
     } else {
@@ -14,15 +14,15 @@ module.exports = class CarService {
     }
   }
 
-  getAll() {
+  async getAll() {
     return this.CarRepository.getAll();
   }
 
-  getById(id) {
+  async getById(id) {
     return this.CarRepository.getById(id);
   }
 
-  delete(car) {
+  async delete(car) {
     return this.CarRepository.delete(car);
   }
 };

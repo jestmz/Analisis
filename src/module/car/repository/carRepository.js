@@ -1,92 +1,45 @@
-const { fromDatabaseToEntity } = require('../utilities/mapper/carMapper');
+const { fromModelToEntity } = require('../utilities/mapper/carMapper');
 
 module.exports = class CarRepository {
   /**
-   * @param  {import("better-sqlite3").Database} databaseAdapter
+   * @param  {import("../model/carModel} carModel
    */
-  constructor(databaseAdapter) {
-    this.databaseAdapter = databaseAdapter;
+  constructor(carModel) {
+    this.carModel = carModel;
   }
 
   /**
    * @param  {import("../utilities/entity/carEntity")} car
    */
-  create(car) {
-    const statement = this.databaseAdapter.prepare(`
-    INSERT INTO cars (
-      brand,
-      model,
-      year,
-      kms,
-      color,
-      air_conditioning,
-      passengers
-    )
-    values(?,?,?,?,?,?,?)
-    `);
+  async create(car) {
+    let carModel;
+    carModel = this.carModel.build(car);
+    carModel = await carModel.save();
 
-    const result = statement.run(
-      car.brand,
-      car.model,
-      car.year,
-      car.kms,
-      car.color,
-      car.airConditioning,
-      car.passengers
-    );
-
-    const id = result.lastInsertRowid;
-    return this.getById(id);
+    return fromModelToEntity(carModel);
   }
   /**
    * @param  {import("../utilities/entity/carEntity")} car
    */
-  update(car) {
-    const id = car.id;
-    const carUpdate = this.databaseAdapter.prepare(`
-      UPDATE cars SET
-      brand = ?,
-      model = ?,
-      year = ?,
-      kms = ?,
-      color = ?,
-      air_conditioning = ?,
-      passengers = ?
-      WHERE id = ?
-    `);
+  async update(car) {
+    let carModel = await this.carModel.findOne({ where: { id: car.id } });
+    carModel = this.carModel.build(car, { isNewRecord: false });
+    carModel = await carModel.save();
 
-    const params = [
-      car.brand,
-      car.model,
-      car.year,
-      car.kms,
-      car.color,
-      car.airConditioning,
-      car.passengers,
-      car.id,
-    ];
-
-    carUpdate.run(params);
-
-    return this.getById(id);
+    return fromModelToEntity(carModel);
   }
 
-  getById(id) {
-    const car = this.databaseAdapter.prepare(`SELECT * FROM cars WHERE id = ?`).get(id);
-    if (!car) {
-      return undefined;
-    }
-    return fromDatabaseToEntity(car);
+  async getById(id) {
+    const carModel = await this.carModel.findOne({ where: { id } });
+    return fromModelToEntity(carModel);
   }
 
-  delete(car) {
-    const id = car.id;
-    this.databaseAdapter.prepare(`DELETE FROM cars WHERE id = ?`).run(id);
-    return true;
+  async delete(car) {
+    console.log(car);
+    return Boolean(await this.carModel.destroy({ where: { id: car.id } }));
   }
-
-  getAll() {
-    const cars = this.databaseAdapter.prepare(`SELECT * FROM cars`).all();
-    return cars.map((car) => fromDatabaseToEntity(car));
+  async getAll() {
+    const cars = await this.carModel.findAll();
+    return cars.map(fromModelToEntity);
   }
 };
