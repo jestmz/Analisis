@@ -8,6 +8,7 @@ function configureSequelizeDatabase() {
   const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './data/database.db',
+    logging: false,
   });
   return sequelize;
 }
