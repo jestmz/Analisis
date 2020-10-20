@@ -1,0 +1,52 @@
+{% extends 'view/layout.html' %} {% block body %}
+
+  {% for message in messages %}
+    <div class="container">
+  <div class="notification is-success is-light is-size-4 has-text-centered">
+   {{message}}
+  </div>
+</div>
+  {% endfor %}
+
+{% for error in errors %}
+    <div class="container">
+  <div class="notification is-danger is-light is-size-5 has-text-centered">
+   {{error}}
+  </div>
+</div>
+  {% endfor %}
+
+
+<a class="button is-large is-link is-light" href="/client/create">Add new client</a>
+
+<table class="table is-striped is-narrow is-hoverable is-fullwidth">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>NastName</th>
+    <th>DNI</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+    <th>Date of Birth</th>
+  </tr>
+  <tr>
+      {% for client in data.clients %}
+
+  <tr>
+    <td>{{client.id}}</td>
+    <td>{{client.name}}</td>
+    <td>{{client.lastName}}</td>
+    <td>{{client.DNI}}</td>
+     <td>{{client.address}}</td>
+    <td>{{client.phone}}</td>
+    <td>{{client.email}}</td>
+    <td>{{client.birthday}}</td>
+    <td><a href="/client/edit/{{client.id}}" class="button is-info is-fullwidth">Edit</a></td>
+    <td><a href="/client/delete/{{client.id}}" class="button is-danger is-fullwidth">Delete</a></td>
+  </tr>
+  {% endfor %}
+
+</table>
+
+{% endblock %}

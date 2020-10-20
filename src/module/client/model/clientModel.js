@@ -1,11 +1,11 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
-module.exports = class CarModel extends Model {
+module.exports = class ClientModel extends Model {
   /**
    * @param  {import("sequelize").Sequelize} sequelizeInstance
    */
   static setup(sequelizeInstance) {
-    CarModel.init(
+    ClientModel.init(
       {
         id: {
           type: DataTypes.INTEGER,
@@ -14,25 +14,28 @@ module.exports = class CarModel extends Model {
           autoIncrement: true,
           unique: true,
         },
-        brand: {
+        name: {
           type: DataTypes.STRING,
         },
-        model: {
+        last_name: {
           type: DataTypes.STRING,
         },
-        year: {
+        DNI: {
           type: DataTypes.STRING,
         },
-        kms: {
+        nacionality: {
           type: DataTypes.STRING,
         },
-        color: {
+        address: {
           type: DataTypes.STRING,
         },
-        airConditioning: {
+        phone: {
           type: DataTypes.STRING,
         },
-        passengers: {
+        email: {
+          type: DataTypes.STRING,
+        },
+        birthday: {
           type: DataTypes.STRING,
         },
         created_at: {
@@ -46,11 +49,11 @@ module.exports = class CarModel extends Model {
       },
       {
         sequelize: sequelizeInstance,
-        modelName: 'Car',
+        modelName: 'Client',
         timestamps: false,
       }
     );
 
-    return CarModel;
+    return ClientModel;
   }
 };

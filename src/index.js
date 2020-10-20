@@ -3,6 +3,7 @@ const app = express();
 const nunjucks = require('nunjucks');
 
 const { initCarModule } = require('./module/car/module');
+const { initClientModule } = require('./module/client/module');
 const configureDependencyInversion = require('./config/di');
 const container = configureDependencyInversion();
 
@@ -22,6 +23,7 @@ mainDb.sync();
 const session = container.get('Session');
 app.use(session);
 initCarModule(container, app);
+initClientModule(container, app);
 
 /**
  * @type  {import("./module/car/controller/carController")} CarController
