@@ -22,26 +22,26 @@
 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
   <tr>
     <th>Id</th>
-    <th>Brand</th>
-    <th>Model</th>
-    <th>Year</th>
-    <th>Kilometers</th>
-    <th>Color</th>
-    <th>Air Conditioning</th>
-    <th>Number of Passengers</th>
+    <th>Name</th>
+    <th>NastName</th>
+    <th>DNI</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+    <th>Date of Birth</th>
   </tr>
   <tr>
       {% for client in data.clients %}
 
   <tr>
     <td>{{client.id}}</td>
-    <td>{{client.brand}}</td>
-    <td>{{client.model}}</td>
-    <td>{{client.year}}</td>
-     <td>{{client.kms}}</td>
-    <td>{{client.color}}</td>
-    <td>{{client.airConditioning}}</td>
-    <td>{{client.passengers}}</td>
+    <td>{{client.name}}</td>
+    <td>{{client.lastName}}</td>
+    <td>{{client.DNI}}</td>
+     <td>{{client.address}}</td>
+    <td>{{client.phone}}</td>
+    <td>{{client.email}}</td>
+    <td>{{client.birthday}}</td>
     <td><a href="/client/edit/{{client.id}}" class="button is-info is-fullwidth">Edit</a></td>
     <td><a href="/client/delete/{{client.id}}" class="button is-danger is-fullwidth">Delete</a></td>
   </tr>
