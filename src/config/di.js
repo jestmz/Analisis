@@ -1,5 +1,11 @@
 const { default: DIContainer, factory, object, get } = require('rsdi');
 const { CarController, CarService, CarRepository, CarModel } = require('../module/car/module');
+const {
+  ClientController,
+  ClientService,
+  ClientRepository,
+  ClientModel,
+} = require('../module/client/module');
 const { Sequelize } = require('sequelize');
 
 const session = require('express-session');
@@ -11,6 +17,12 @@ function configureSequelizeDatabase() {
     logging: false,
   });
   return sequelize;
+}
+
+function configureClientModel(container) {
+  const sequelize = container.get('Sequelize');
+  ClientModel.setup(sequelize);
+  return ClientModel;
 }
 
 function configureCarModel(container) {
@@ -46,9 +58,19 @@ function addCarModuleDefinitions(container) {
   });
 }
 
+function addClientModuleDefinitions(container) {
+  container.addDefinitions({
+    ClientController: object(ClientController).construct(get('ClientService')),
+    ClientService: object(ClientService).construct(get('ClientRepository')),
+    ClientRepository: object(ClientRepository).construct(get('ClientModel')),
+    ClientModel: factory(configureClientModel),
+  });
+}
+
 function configureDI() {
   const container = new DIContainer();
   addCarModuleDefinitions(container);
+  addClientModuleDefinitions(container);
   addCommonDefinitions(container);
   return container;
 }
