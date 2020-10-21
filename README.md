@@ -14,7 +14,6 @@ CRUD para gestionar Autos, Clientes y Alquileres.
 npm run dev # corre el proyecto en modo desarrollo
 npm run test # corre tests de jest 
 npm run test:dev # corre tests de jest con watchMode
-npm run test:ui # corre pruebas de interfaz en modo "headless"
 npm run test:ui:cov # corre tests de Jest y recolecta Coverage
 ```
 ## TODO
