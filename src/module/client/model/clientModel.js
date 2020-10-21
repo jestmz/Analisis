@@ -35,7 +35,7 @@ module.exports = class ClientModel extends Model {
         email: {
           type: DataTypes.STRING,
         },
-        birthday: {
+        birth: {
           type: DataTypes.STRING,
         },
         created_at: {

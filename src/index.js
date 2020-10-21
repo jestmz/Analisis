@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const mainDb = container.get('Sequelize');
 
-mainDb.sync();
+mainDb.sync({ force: true });
 
 const session = container.get('Session');
 app.use(session);

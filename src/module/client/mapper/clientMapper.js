@@ -1,7 +1,7 @@
 const Client = require('../entity/clientEntity');
 
-function fromDataToEntity({ id, name, lastName, DNI, address, phone, email, birthday }) {
-  return new Client({ id, name, lastName, DNI, address, phone, email, birthday });
+function fromDataToEntity({ id, name, lastName, DNI, address, phone, email, birth }) {
+  return new Client({ id, name, lastName, DNI, address, phone, email, birth });
 }
 
 function fromModelToEntity(model) {
