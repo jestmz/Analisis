@@ -17,7 +17,7 @@ module.exports = class ClientModel extends Model {
         name: {
           type: DataTypes.STRING,
         },
-        last_name: {
+        lastName: {
           type: DataTypes.STRING,
         },
         DNI: {

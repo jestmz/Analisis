@@ -1,5 +1,5 @@
 module.exports = class Client {
-  constructor({ id, name, lastName, DNI, address, phone, email, birthday }) {
+  constructor({ id, name, lastName, DNI, address, phone, email, birth }) {
     this.id = id;
     this.name = name;
     this.lastName = lastName;
@@ -7,6 +7,6 @@ module.exports = class Client {
     this.address = address;
     this.phone = phone;
     this.email = email;
-    this.birthday = birthday;
+    this.birth = birth;
   }
 };
