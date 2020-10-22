@@ -6,6 +6,7 @@ const {
   ClientRepository,
   ClientModel,
 } = require('../module/client/module');
+const { RentController, RentService, RentRepository, RentModel } = require('../module/rent/module');
 const { Sequelize } = require('sequelize');
 
 const session = require('express-session');
@@ -17,6 +18,13 @@ function configureSequelizeDatabase() {
     logging: false,
   });
   return sequelize;
+}
+
+function configureRentModel(container) {
+  const sequelize = container.get('Sequelize');
+  RentModel.setup(sequelize);
+  RentModel.setupAssociations(CarModel, ClientModel);
+  return RentModel;
 }
 
 function configureClientModel(container) {
@@ -67,10 +75,24 @@ function addClientModuleDefinitions(container) {
   });
 }
 
+function addRentModuleDefinitions(container) {
+  container.addDefinitions({
+    RentController: object(RentController).construct(
+      get('RentService'),
+      get('CarService'),
+      get('ClientService')
+    ),
+    RentService: object(RentService).construct(get('RentRepository')),
+    RentRepository: object(RentRepository).construct(get('RentModel')),
+    RentModel: factory(configureRentModel),
+  });
+}
+
 function configureDI() {
   const container = new DIContainer();
   addCarModuleDefinitions(container);
   addClientModuleDefinitions(container);
+  addRentModuleDefinitions(container);
   addCommonDefinitions(container);
   return container;
 }

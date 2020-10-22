@@ -1,0 +1,112 @@
+{% extends 'view/layout.html' %} {% block body %} {% set rent = data.rent %}
+
+<div class="container">
+  <a href="/rent" class="button is-link title">Go Home</a>
+
+  <form method="POST" action="/rent/save">
+    <div class="field">
+      <input class="input" type="hidden" value="{{rent.id}}" name="id" readonly />
+    </div>
+
+    <label class="label">Select Car</label>
+    <div class="control has-icons-left">
+      <div class="select is-medium is-rounded">
+        <select>
+          <option value="CarTest">Cars here</option>
+        </select>
+        <div class="icon is-small is-left">
+          <i class="fas fa-car"></i>
+        </div>
+      </div>
+    </div>
+
+    <label class="label">Select Client</label>
+    <div class="control has-icons-left">
+      <div class="select is-medium is-rounded">
+        <select>
+          <option value="Client-test">Clients Here</option>
+        </select>
+        <div class="icon is-small is-left">
+          <i class="fas fa-users"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Price Per Day:</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="$"
+        name="pricePerDay"
+        value="{{rent.pricePerDay}}"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Starting Date</label>
+        <input
+          class="input"
+          type="date"
+          name="startingDate"
+          value="{{rent.startingDate}}"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Last Day</label>
+      <input
+        class="input"
+        type="date"
+        name="finishingDate"
+        value="{{rent.finishingDate}}"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label class="label">Total Price</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="$"
+        name="totalPrice"
+        value="{{rent.totalPrice}}"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label class="label">Payment Method</label>
+      <label>
+        <input type="radio" class="" name="paymentMethod" value="cash" required />
+        Cash
+      </label>
+      <label>
+        <input type="radio" class="" name="paymentMethod" value="card" required />
+        Credit Card
+      </label>
+    </div>
+
+    <div class="field">
+      <label class="label">Is paid?</label>
+      <label>
+        <input type="radio" class="" name="isPaid" value="true" required />
+        Yes
+      </label>
+      <label>
+        <input type="radio" class="" name="isPaid" value="false" required />
+        No
+      </label>
+    </div>
+
+    <div class="control">
+      <input type="submit" class="button is-primary is-light is-fullwidth" value="Submit" />
+    </div>
+  </form>
+</div>
+{% endblock %}
