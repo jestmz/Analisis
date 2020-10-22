@@ -1,32 +1,27 @@
-{% extends 'view/layout.html' %} {% block body %}
-
-  {% for message in messages %}
-    <div class="container">
-  <div class="notification is-success is-light is-size-4 has-text-centered">
-   {{message}}
-  </div>
+{% extends 'view/layout.html' %} {% block body %} {% for message in messages %}
+<div class="container">
+  <div class="notification is-success is-light is-size-4 has-text-centered">{{message}}</div>
 </div>
-  {% endfor %}
-
-{% for error in errors %}
-    <div class="container">
-  <div class="notification is-danger is-light is-size-5 has-text-centered">
-   {{error}}
-  </div>
+{% endfor %} {% for error in errors %}
+<div class="container">
+  <div class="notification is-danger is-light is-size-5 has-text-centered">{{error}}</div>
 </div>
-  {% endfor %}
+{% endfor %}
 
-  <section class="hero">
+<section class="hero">
   <div class="hero-body">
     <div class="has-text-centered has-text-black-ter">
-      <h1 class="title is-size-3 ">
-        Clients Index
-      </h1>
+      <h1 class="title is-size-3">Clients Index</h1>
     </div>
   </div>
 </section>
 
-<a class="button is-large is-link is-light" href="/client/create">Add new client</a>
+<button class="button is-large is-link is-light">
+  <a href="/client/create">Add new Client</a>
+  <span class="icon is-small">
+    <i class="fas fa-user"></i>
+  </span>
+</button>
 
 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
   <tr>
@@ -40,14 +35,15 @@
     <th>Date of Birth</th>
   </tr>
   <tr>
-      {% for client in data.clients %}
+    {% for client in data.clients %}
+  </tr>
 
   <tr>
     <td>{{client.id}}</td>
     <td>{{client.name}}</td>
     <td>{{client.lastName}}</td>
     <td>{{client.DNI}}</td>
-     <td>{{client.address}}</td>
+    <td>{{client.address}}</td>
     <td>{{client.phone}}</td>
     <td>{{client.email}}</td>
     <td>{{client.birth}}</td>
@@ -55,7 +51,6 @@
     <td><a href="/client/delete/{{client.id}}" class="button is-danger is-fullwidth">Delete</a></td>
   </tr>
   {% endfor %}
-
 </table>
 
 {% endblock %}

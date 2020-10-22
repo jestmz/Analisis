@@ -1,56 +1,134 @@
-{% extends 'view/layout.html' %}
-
-{% block body %}
-{% set client = data.client %}
+{% extends 'view/layout.html' %} {% block body %} {% set client = data.client %}
 
 <div class="container">
-    <a href="/client" class="button is-link title">Go Home</a>
+  <a href="/client" class="button is-link title">Go Home</a>
 
-    <form method="POST" action="/client/save">
+  <form method="POST" action="/client/save">
+    <div class="field">
+      <input class="input" type="hidden" value="{{client.id}}" name="id" readonly />
+    </div>
 
-        <div class="field">
-            <input class="input" type="hidden" value="{{client.id}}" name="id" readonly/>
-        </div>
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Name"
+          name="name"
+          value="{{client.name}}"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-signature"></i>
+        </span>
+      </div>
+    </div>
 
+    <div class="field">
+      <label class="label">lastName</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="lastName"
+          name="lastName"
+          value="{{client.lastName}}"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-signature"></i>
+        </span>
+      </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Name</label>
-            <input class="input" type="text" placeholder="Name" name="name" value="{{client.name}}" required />
-        </div>
+    <div class="field">
+      <label class="label">DNI</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="DNI"
+          name="DNI"
+          value="{{client.DNI}}"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-passport"></i>
+        </span>
+      </div>
+    </div>
 
-        <div class="field">
-            <label class="label">lastName</label>
-            <input class="input" type="text" placeholder="lastName" name="lastName"  value="{{client.lastName}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Address</label>
+      <div class="control has-icons-left">
+      <input
+        class="input"
+        type="text"
+        placeholder="Address"
+        name="address"
+        value="{{client.address}}"
+        required
+      />
+       <span class="icon is-small is-left">
+          <i class="fas fa-map-marker-alt"></i>
+        </span>
+    </div>
 
-        <div class="field">
-            <label class="label">DNI</label>
-            <input class="input" type="text" placeholder="DNI" name="DNI"  value="{{client.DNI}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Phone</label>
+      <div class="control has-icons-left">
+      <input
+        class="input"
+        type="text"
+        placeholder="Phone"
+        name="phone"
+        value="{{client.phone}}"
+        required
+      />
+       <span class="icon is-small is-left">
+          <i class="fas fa-phone"></i>
+        </span>
+      </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Address</label>
-            <input class="input" type="text" placeholder="Address" name="address" value="{{client.address}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control has-icons-left">
+      <input
+        class="input"
+        type="email"
+        placeholder="Email"
+        name="email"
+        value="{{client.email}}"
+        required
+      />
+       <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Phone</label>
-            <input class="input" type="text" placeholder="Phone" name="phone" value="{{client.phone}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Date Of Birth</label>
+      <div class="control has-icons-left">
+      <input
+        class="input"
+        type="text"
+        placeholder="Birthday"
+        name="birth"
+        value="{{client.birth}}"
+        required
+      />
+       <span class="icon is-small is-left">
+          <i class="fas fa-birthday-cake"></i>
+        </span>
+      </div>
+    </div>
 
-           <div class="field">
-            <label class="label">Email</label>
-            <input class="input" type="email" placeholder="Email" name="email" value="{{client.email}}" required />
-        </div>
-
-           <div class="field">
-            <label class="label">Date Of Birth</label>
-            <input class="input" type="text" placeholder="Birthday" name="birth" value="{{client.birth}}" required />
-        </div>
-
-        <div>
-            <input type="submit" class="button is-primary is-light is-fullwidth" value="Submit" />
-        </div>
-    </form>
+    <div>
+      <input type="submit" class="button is-primary is-light is-fullwidth" value="Submit" />
+    </div>
+  </form>
 </div>
 {% endblock %}

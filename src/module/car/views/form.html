@@ -1,63 +1,131 @@
-{% extends 'view/layout.html' %}
-
-{% block body %}
-{% set car = data.car %}
+{% extends 'view/layout.html' %} {% block body %} {% set car = data.car %}
 
 <div class="container">
-    <a href="/" class="button is-link title">Go Home</a>
+  <a href="/" class="button is-link title">Go Home</a>
 
-    <form method="POST" action="/car/save">
+  <form method="POST" action="/car/save">
+    <div class="field">
+      <input class="input" type="hidden" value="{{car.id}}" name="id" readonly />
+    </div>
 
-        <div class="field">
-            <input class="input" type="hidden" value="{{car.id}}" name="id" readonly/>
-        </div>
+    <div class="field">
+      <label class="label">Brand</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Brand"
+          name="brand"
+          value="{{car.brand}}"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-car"></i>
+        </span>
+      </div>
+    </div>
 
+    <div class="field">
+      <label class="label">Model</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Model"
+          name="model"
+          value="{{car.model}}"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-car"></i>
+        </span>
+      </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Brand</label>
-            <input class="input" type="text" placeholder="Brand" name="brand" value="{{car.brand}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Year</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="address"
+          name="year"
+          value="{{car.year}}"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-calendar"></i>
+        </span>
+      </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Model</label>
-            <input class="input" type="text" placeholder="Model" name="model" value="{{car.model}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Kms</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Kms"
+          name="kms"
+          value="{{car.kms}}"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-bookmark"></i>
+        </span>
+      </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Year</label>
-            <input class="input" type="text" placeholder="address" name="year"  value="{{car.year}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Color</label>
+      <div class="control has-icons-left">
+      <input
+        class="input"
+        type="text"
+        placeholder="Color"
+        name="color"
+        value="{{car.color}}"
+        required
+      />
+          <span class="icon is-small is-left">
+      <i class="fas fa-tint"></i>
+    </span>
 
-        <div class="field">
-            <label class="label">Kms</label>
-            <input class="input" type="text" placeholder="Kms" name="kms" value="{{car.kms}}" required />
-        </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Color</label>
-            <input class="input" type="text" placeholder="Color" name="color" value="{{car.color}}" required />
-        </div>
+    <div class="field">
+      <label class="label">Has Air conditioning?</label>
+      <label>
+        <input type="radio" class="" name="airConditioning" value="yes" required />
+        Yes
+      </label>
+      <label>
+        <input type="radio" class="" name="airConditioning" value="no" required />
+        No
+      </label>
+    </div>
 
-        <div class="field">
-            <label class="label">Has Air conditioning?</label>
-            <label>
-                <input type="radio" class="" name="airConditioning" value="yes" required>
-                Yes
-            </label>
-            <label>
-                <input type="radio" class="" name="airConditioning" value="no" required>
-                No
-            </label>
-        </div>
+    <div class="field">
+      <label class="label">Number of passengers</label>
+      <div class="control has-icons-left">
+      <input
+        class="input"
+        type="number"
+        placeholder="Number of pax"
+        name="passengers"
+        value="{{car.passengers}}"
+        required
+      />
+          <span class="icon is-small is-left">
+      <i class="fas fa-user-friends"></i>
+    </span>
 
-        <div class="field">
-            <label class="label">Number of passengers</label>
-            <input class="input" type="number" placeholder="Number of pax" name="passengers" value="{{car.passengers}}" required />
-        </div>
+      </div>
+    </div>
 
-        <div>
-            <input type="submit" class="button is-primary is-light is-fullwidth" value="Submit" />
-        </div>
-    </form>
+    <div>
+      <input type="submit" class="button is-primary is-light is-fullwidth" value="Submit" />
+    </div>
+  </form>
 </div>
 {% endblock %}
