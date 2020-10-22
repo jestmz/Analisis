@@ -18,6 +18,6 @@ npm run test:cov # corre tests de Jest y recolecta Coverage
 ```
 ## TODO
 * Fix Jest tests
-* Rent Module
 * C4 Diagrams
 * Form Validation
+* Add FA icons
