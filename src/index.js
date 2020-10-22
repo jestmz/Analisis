@@ -4,6 +4,7 @@ const nunjucks = require('nunjucks');
 
 const { initCarModule } = require('./module/car/module');
 const { initClientModule } = require('./module/client/module');
+const { initRentModule } = require('./module/rent/module');
 const configureDependencyInversion = require('./config/di');
 const container = configureDependencyInversion();
 
@@ -24,6 +25,7 @@ const session = container.get('Session');
 app.use(session);
 initCarModule(container, app);
 initClientModule(container, app);
+initRentModule(container, app);
 
 /**
  * @type  {import("./module/car/controller/carController")} CarController
