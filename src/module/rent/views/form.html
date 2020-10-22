@@ -1,4 +1,8 @@
-{% extends 'view/layout.html' %} {% block body %} {% set rent = data.rent %}
+{% extends 'view/layout.html' %} {% block body %}
+
+{% set rent = data.rent %}
+{% set cars = data.cars %}
+{% set clients = data.clients %}
 
 <div class="container">
   <a href="/rent" class="button is-link title">Go Home</a>
@@ -7,12 +11,17 @@
     <div class="field">
       <input class="input" type="hidden" value="{{rent.id}}" name="id" readonly />
     </div>
-
+    <h1></h1>
     <label class="label">Select Car</label>
     <div class="control has-icons-left">
       <div class="select is-medium is-rounded">
-        <select>
-          <option value="CarTest">Cars here</option>
+        <select name="carId">
+          <option {{"selected" if car.id}}>Select</option>
+          {% for car in cars %}
+          <option value="{{car.id}}" {{"selected" if car.id == rent.id}}>
+            {{car.brand + " " + car.model + " " + car.year + " " + car.kms + " " + car.color + " " + car.passengers}}
+          </option>
+          {% endfor %}
         </select>
         <div class="icon is-small is-left">
           <i class="fas fa-car"></i>
@@ -23,8 +32,13 @@
     <label class="label">Select Client</label>
     <div class="control has-icons-left">
       <div class="select is-medium is-rounded">
-        <select>
-          <option value="Client-test">Clients Here</option>
+        <select name="clientId">
+          <option {{"selected" if client.id}} >Select</option>
+          {% for client in clients %}
+          <option value={{client.id}} {{"selected" if rent.ClientId == client.id}}>
+            {{client.name + " " + client.lastName + " " + client.DNI + " " + client.address + " " + client.phone + " " + client.email + " " + client.birth}}
+          </option>
+          {% endfor %}
         </select>
         <div class="icon is-small is-left">
           <i class="fas fa-users"></i>
@@ -34,50 +48,24 @@
 
     <div class="field">
       <label class="label">Price Per Day:</label>
-      <input
-        class="input"
-        type="number"
-        placeholder="$"
-        name="pricePerDay"
-        value="{{rent.pricePerDay}}"
-        required
-      />
+      <input class="input" type="number" placeholder="$" name="pricePerDay" value="{{rent.pricePerDay}}" required />
     </div>
 
     <div class="field">
       <div class="control">
         <label class="label">Starting Date</label>
-        <input
-          class="input"
-          type="date"
-          name="startingDate"
-          value="{{rent.startingDate}}"
-          required
-        />
+        <input class="input" type="date" name="startingDate" value="{{rent.startingDate}}" required />
       </div>
     </div>
 
     <div class="field">
       <label class="label">Last Day</label>
-      <input
-        class="input"
-        type="date"
-        name="finishingDate"
-        value="{{rent.finishingDate}}"
-        required
-      />
+      <input class="input" type="date" name="finishingDate" value="{{rent.finishingDate}}" required />
     </div>
 
     <div class="field">
       <label class="label">Total Price</label>
-      <input
-        class="input"
-        type="number"
-        placeholder="$"
-        name="totalPrice"
-        value="{{rent.totalPrice}}"
-        required
-      />
+      <input class="input" type="number" placeholder="$" name="totalPrice" value="{{rent.totalPrice}}" required />
     </div>
 
     <div class="field">

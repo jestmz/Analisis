@@ -14,14 +14,6 @@ module.exports = class RentModel extends Model {
           autoIncrement: true,
           unique: true,
         },
-        car: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        client: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
         pricePerDay: {
           type: DataTypes.STRING,
           allowNull: false,
@@ -66,7 +58,7 @@ module.exports = class RentModel extends Model {
   }
 
   static setupAssociations(CarModel, ClientModel) {
-    RentModel.belongsTo(CarModel, { foreignKey: 'car_id' });
-    RentModel.belongsTo(ClientModel, { foreignKey: 'client_id' });
+    RentModel.belongsTo(CarModel, { foreignKey: 'CarId' });
+    RentModel.belongsTo(ClientModel, { foreignKey: 'ClientId' });
   }
 };

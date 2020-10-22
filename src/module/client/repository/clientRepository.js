@@ -10,7 +10,6 @@ module.exports = class ClientRepository {
 
   async create(client) {
     const clientInstance = await this.clientModel.create(client);
-    console.log(clientInstance);
     return fromModelToEntity(clientInstance);
   }
 

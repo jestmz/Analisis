@@ -29,10 +29,6 @@ module.exports = class RentController {
    */
   async index(req, res) {
     const rentList = await this.rentService.getAll();
-    const CarList = await this.CarService.getAll();
-    console.log(CarList);
-    const ClientsList = await this.ClientService.getAll();
-    console.log(ClientsList);
     const { messages, errors } = req.session;
     res.render('rent/views/index.html', { data: { rentList }, messages, errors });
 
@@ -43,8 +39,16 @@ module.exports = class RentController {
    * @param  {import("express").Request} req
    * @param  {import("express").Response} res
    */
-  create(req, res) {
-    res.render('rent/views/form.html');
+  async create(req, res) {
+    const cars = await this.CarService.getAll();
+    const clients = await this.ClientService.getAll();
+
+    if (cars.length > 0 && clients.length > 0) {
+      res.render('rent/views/form.html', { data: { cars, clients } });
+    } else {
+      req.session.errors = ['Must Create a Car and a Client Before'];
+      res.redirect('/rent');
+    }
   }
 
   /**
