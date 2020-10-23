@@ -25,6 +25,7 @@ module.exports = class CarController {
    */
   async index(req, res) {
     const cars = await this.CarService.getAll();
+    console.log(cars);
     const { messages, errors } = req.session;
     res.render('car/views/index.html', { data: { cars }, messages, errors });
 

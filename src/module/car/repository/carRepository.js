@@ -31,6 +31,9 @@ module.exports = class CarRepository {
   }
 
   async delete(car) {
+    if (!car) {
+      throw Error;
+    }
     return Boolean(await this.carModel.destroy({ where: { id: car.id } }));
   }
   async getAll() {
