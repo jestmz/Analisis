@@ -25,6 +25,9 @@ module.exports = class ClientRepository {
   }
 
   async delete(client) {
+    if (!client) {
+      throw Error;
+    }
     const clientModel = await this.clientModel.destroy({ where: { id: client.id } });
     return Boolean(clientModel);
   }

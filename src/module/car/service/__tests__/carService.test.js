@@ -23,6 +23,7 @@ test('If car has an Id at saving, calls update method of the repository ', () =>
 
   expect(repositoryMock.update).toHaveBeenCalledTimes(1);
   expect(repositoryMock.update).toHaveBeenCalledWith(FAKE_CAR);
+  expect(repositoryMock.create).not.toBeCalled();
 });
 
 test('If car has not an id, then calls create method of the repository ', () => {
