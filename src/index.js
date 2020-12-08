@@ -34,5 +34,5 @@ const CarController = container.get('CarController');
 app.get('/', CarController.index.bind(CarController));
 
 app.listen(PORT, () => {
-  console.log('Listening on ' + PORT);
+  console.log(`Listening on http://localhost:8080/`);
 });
