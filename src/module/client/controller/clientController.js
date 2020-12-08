@@ -61,7 +61,7 @@ module.exports = class ClientController {
     try {
       const { id } = req.params;
       const client = await this.ClientService.getById(id);
-      this.ClientService.delete(client);
+      await this.ClientService.delete(client);
       req.session.messages = [`Client with Id ${id} has been deleted`];
     } catch (e) {
       req.session.errors = [e.message, e.stack];

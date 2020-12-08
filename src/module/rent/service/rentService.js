@@ -8,21 +8,21 @@ module.exports = class RentService {
 
   async save(rent) {
     if (rent.id) {
-      return this.RentRepository.update(rent);
+      return await this.RentRepository.update(rent);
     } else {
-      return this.RentRepository.create(rent);
+      return await this.RentRepository.create(rent);
     }
   }
 
   async getAll() {
-    return this.RentRepository.getAll();
+    return await this.RentRepository.getAll();
   }
 
   async getById(id) {
-    return this.RentRepository.getById(id);
+    return await this.RentRepository.getById(id);
   }
 
   async delete(rent) {
-    return this.RentRepository.delete(rent);
+    return await this.RentRepository.delete(rent);
   }
 };

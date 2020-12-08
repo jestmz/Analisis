@@ -8,21 +8,21 @@ module.exports = class ClientService {
 
   async save(client) {
     if (client.id) {
-      return this.clientRepository.update(client);
+      return await this.clientRepository.update(client);
     } else {
-      return this.clientRepository.create(client);
+      return await this.clientRepository.create(client);
     }
   }
 
   async getAll() {
-    return this.clientRepository.getAll();
+    return await this.clientRepository.getAll();
   }
 
   async getById(id) {
-    return this.clientRepository.getById(id);
+    return await this.clientRepository.getById(id);
   }
 
   async delete(client) {
-    return this.clientRepository.delete(client);
+    return await this.clientRepository.delete(client);
   }
 };

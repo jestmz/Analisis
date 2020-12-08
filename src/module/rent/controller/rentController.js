@@ -73,7 +73,7 @@ module.exports = class RentController {
     try {
       const { id } = req.params;
       const rent = await this.rentService.getById(id);
-      this.rentService.delete(rent);
+      await this.rentService.delete(rent);
       req.session.messages = [`Rent with Id ${id} has been deleted`];
     } catch (e) {
       req.session.errors = [e.message, e.stack];
