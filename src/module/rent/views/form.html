@@ -4,9 +4,12 @@
 {% set cars = data.cars %}
 {% set clients = data.clients %}
 
+
+{% set car = data.car %}
+{% set client = data.client %}
+
 <div class="container">
   <a href="/rent" class="button is-link title">Go Home</a>
-
   <form method="POST" action="/rent/save">
     <div class="field">
       <input class="input" type="hidden" value="{{rent.id}}" name="id" readonly />
@@ -22,6 +25,12 @@
             {{car.brand + " " + car.model + " " + car.year + " " + car.kms + " " + car.color + " " + car.passengers}}
           </option>
           {% endfor %}
+
+          {%if car%}
+          <option value="{{car.id}}" {{"selected" if car.id == rent.id}}>
+            {{car.brand + " " + car.model + " " + car.year + " " + car.kms + " " + car.color + " " + car.passengers}}
+          </option>
+          {%endif%}
         </select>
         <div class="icon is-small is-left">
           <i class="fas fa-car"></i>
@@ -39,6 +48,12 @@
             {{client.name + " " + client.lastName + " " + client.DNI + " " + client.address + " " + client.phone + " " + client.email + " " + client.birth}}
           </option>
           {% endfor %}
+
+            {% if client %}
+          <option value={{client.id}} {{"selected" if rent.ClientId == client.id}}>
+            {{client.name + " " + client.lastName + " " + client.DNI + " " + client.address + " " + client.phone + " " + client.email + " " + client.birth}}
+          </option>
+          {% endif %}
         </select>
         <div class="icon is-small is-left">
           <i class="fas fa-users"></i>

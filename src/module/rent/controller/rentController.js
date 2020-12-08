@@ -85,9 +85,10 @@ module.exports = class RentController {
     try {
       const { id } = req.params;
       const rent = await this.rentService.getById(id);
+      const car = await this.CarService.getById(rent.CarId);
+      const client = await this.ClientService.getById(rent.ClientId);
+      res.render('rent/views/form.html', { data: { rent, car, client } });
       req.session.messages = [`Rent with Id ${rent.id} has been updated`];
-
-      res.render('rent/views/form.html', { data: { rent } });
     } catch (e) {
       req.session.errors = [e.message, e.stack];
       res.redirect('/rent');

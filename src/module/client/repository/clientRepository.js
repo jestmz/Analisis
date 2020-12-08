@@ -21,7 +21,7 @@ module.exports = class ClientRepository {
 
   async getById(id) {
     const clientModel = await this.clientModel.findOne({ where: { id } });
-    return clientModel;
+    return fromModelToEntity(clientModel);
   }
 
   async delete(client) {
