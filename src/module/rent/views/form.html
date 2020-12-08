@@ -21,13 +21,13 @@
         <select name="carId">
           <option {{"selected" if car.id}}>Select</option>
           {% for car in cars %}
-          <option value="{{car.id}}" {{"selected" if car.id == rent.id}}>
+          <option value="{{car.id}}" {{"selected" if rent.CarId == car.id}}>
             {{car.brand + " " + car.model + " " + car.year + " " + car.kms + " " + car.color + " " + car.passengers}}
           </option>
           {% endfor %}
 
           {%if car%}
-          <option value="{{car.id}}" {{"selected" if car.id == rent.id}}>
+          <option value="{{car.id}}" {{"selected" if rent.CarId == client.id}}>
             {{car.brand + " " + car.model + " " + car.year + " " + car.kms + " " + car.color + " " + car.passengers}}
           </option>
           {%endif%}
