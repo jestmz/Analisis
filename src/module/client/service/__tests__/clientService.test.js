@@ -7,6 +7,7 @@ const RepositoryMock = {
   getById: jest.fn(),
   delete: jest.fn(),
   update: jest.fn(),
+  create: jest.fn(),
 };
 
 const Service = new ClientService(RepositoryMock);
@@ -23,16 +24,15 @@ test('Save calls Update method if Client has an Id ', () => {
   expect(RepositoryMock.update).toHaveBeenCalledWith(clientMock);
   expect(RepositoryMock.update).toHaveBeenCalledTimes(1);
 });
-/*
-test('Save calls Create method if client has not an ID', () => {
-  const clientMock = new Client({ id: NaN });
+
+test('Save calls Update method if Client has an Id ', () => {
+  const clientMock = new Client({ id: null });
   Service.save(clientMock);
 
-  expect(clientMock.id).toBeNaN();
-  expect(RepositoryMock.create).toHaveBeenCalledTimes(1);
   expect(RepositoryMock.create).toHaveBeenCalledWith(clientMock);
+  expect(RepositoryMock.create).toHaveBeenCalledTimes(1);
 });
-*/
+
 test('Delete calls delete method of the repository', () => {
   const clientMock = new Client({ id: 1 });
   Service.delete(clientMock);
