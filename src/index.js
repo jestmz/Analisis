@@ -13,7 +13,7 @@ nunjucks.configure('src/module/', {
   express: app,
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7777 ;
 app.use('/public', express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,5 +34,5 @@ const CarController = container.get('CarController');
 app.get('/', CarController.index.bind(CarController));
 
 app.listen(PORT, () => {
-  console.log(`Listening on http://localhost:8080/`);
+  console.log(`Listening on http://localhost:` + PORT + `/`);
 });

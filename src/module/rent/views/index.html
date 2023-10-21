@@ -14,13 +14,13 @@
 <section class="hero">
   <div class="hero-body">
     <div class="has-text-centered has-text-black-ter">
-      <h1 class="title is-size-3">Rent Index</h1>
+      <h1 class="title is-size-3">Rentas</h1>
     </div>
   </div>
 </section>
 
 <button class="button is-large is-link is-light">
-  <a href="/rent/create">Manage New Rent</a>
+  <a href="/rent/create">Rentar un vehículos</a>
   <span class="icon is-small">
     <i class="fas fa-exchange-alt"></i>
   </span>
@@ -29,13 +29,13 @@
 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
   <tr>
     <th>Id</th>
-    <th>Car</th>
-    <th>Client</th>
-    <th>Price Per Day</th>
-    <th>Since Date</th>
-    <th>Ending Date</th>
-    <th>totalPrice</th>
-    <th>Payment Method</th>
+    <th>Vehículo</th>
+    <th>Cliente</th>
+    <th>Precio por día</th>
+    <th>Fecha Inicial</th>
+    <th>Fecha Final</th>
+    <th>Precio Total</th>
+    <th>Método de Pago</th>
   </tr>
   <tr>
     {% for rent in data.rentList %}
@@ -50,8 +50,8 @@
     <td>{{rent.finishingDate}}</td>
     <td>{{rent.totalPrice}}</td>
     <td>{{rent.paymentMethod}}</td>
-    <td><a href="/rent/edit/{{rent.id}}" class="button is-info is-fullwidth">Edit</a></td>
-    <td><a href="/rent/delete/{{rent.id}}" class="button is-danger is-fullwidth">Delete</a></td>
+    <td><a href="/rent/edit/{{rent.id}}" class="button is-info is-fullwidth">Editar</a></td>
+    <td><a href="/rent/delete/{{rent.id}}" class="button is-danger is-fullwidth">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>

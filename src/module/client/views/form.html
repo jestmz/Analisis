@@ -1,7 +1,7 @@
 {% extends 'view/layout.html' %} {% block body %} {% set client = data.client %}
 
 <div class="container">
-  <a href="/client" class="button is-link title">Go Home</a>
+  <a href="/client" class="button is-link title">Home</a>
 
   <form method="POST" action="/client/save">
     <div class="field">
@@ -9,12 +9,12 @@
     </div>
 
     <div class="field">
-      <label class="label">Name</label>
+      <label class="label">Nombres</label>
       <div class="control has-icons-left">
         <input
           class="input"
           type="text"
-          placeholder="Name"
+          placeholder="Nombres"
           name="name"
           value="{{client.name}}"
           required
@@ -26,12 +26,12 @@
     </div>
 
     <div class="field">
-      <label class="label">lastName</label>
+      <label class="label">Apellidos</label>
       <div class="control has-icons-left">
         <input
           class="input"
           type="text"
-          placeholder="lastName"
+          placeholder="Apellidos"
           name="lastName"
           value="{{client.lastName}}"
           required
@@ -60,11 +60,11 @@
     </div>
 
     <div class="field">
-      <label class="label">Address</label>
+      <label class="label">Dirección</label>
       <div class="control has-icons-left">
       <input
         class="input"
-        type="text"
+        type="Dirección"
         placeholder="Address"
         name="address"
         value="{{client.address}}"
@@ -76,11 +76,11 @@
     </div>
 
     <div class="field">
-      <label class="label">Phone</label>
+      <label class="label">Teléfono</label>
       <div class="control has-icons-left">
       <input
         class="input"
-        type="text"
+        type="Teléfono"
         placeholder="Phone"
         name="phone"
         value="{{client.phone}}"
@@ -110,12 +110,12 @@
     </div>
 
     <div class="field">
-      <label class="label">Date Of Birth</label>
+      <label class="label">Fecha de Nacimiento</label>
       <div class="control has-icons-left">
       <input
         class="input"
-        type="text"
-        placeholder="Birthday"
+        type="date"
+        placeholder="Fecha de Nacimiento"
         name="birth"
         value="{{client.birth}}"
         required
@@ -127,7 +127,7 @@
     </div>
 
     <div>
-      <input type="submit" class="button is-primary is-light is-fullwidth" value="Submit" />
+      <input type="submit" class="button is-primary is-light is-fullwidth" value="Aceptar" />
     </div>
   </form>
 </div>

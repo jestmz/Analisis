@@ -11,13 +11,13 @@
 <section class="hero">
   <div class="hero-body">
     <div class="has-text-centered has-text-black-ter">
-      <h1 class="title is-size-3">Car Index</h1>
+      <h1 class="title is-size-3">Índice de Vehículos</h1>
     </div>
   </div>
 </section>
 
 <button class="button is-large is-link is-light">
-  <a href="/car/create">Add new Car</a>
+  <a href="/car/create">Agregar un Vehículo</a>
   <span class="icon is-small">
     <i class="fas fa-car"></i>
   </span>
@@ -26,13 +26,13 @@
 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
   <tr>
     <th>Id</th>
-    <th>Brand</th>
-    <th>Model</th>
-    <th>Year</th>
-    <th>Kilometers</th>
+    <th>Marca</th>
+    <th>Modelo</th>
+    <th>Año</th>
+    <th>Kilómetros</th>
     <th>Color</th>
-    <th>Air Conditioning</th>
-    <th>Number of Passengers</th>
+    <th>Aire Acondicionado</th>
+    <th>Número de Pasajeros</th>
   </tr>
   <tr>
     {% for car in data.cars %}
@@ -47,8 +47,8 @@
     <td>{{car.color}}</td>
     <td>{{car.airConditioning}}</td>
     <td>{{car.passengers}}</td>
-    <td><a href="/car/edit/{{car.id}}" class="button is-info is-fullwidth">Edit</a></td>
-    <td><a href="/car/delete/{{car.id}}" class="button is-danger is-fullwidth">Delete</a></td>
+    <td><a href="/car/edit/{{car.id}}" class="button is-info is-fullwidth">Editar</a></td>
+    <td><a href="/car/delete/{{car.id}}" class="button is-danger is-fullwidth">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>

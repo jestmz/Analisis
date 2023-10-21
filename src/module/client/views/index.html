@@ -11,13 +11,13 @@
 <section class="hero">
   <div class="hero-body">
     <div class="has-text-centered has-text-black-ter">
-      <h1 class="title is-size-3">Clients Index</h1>
+      <h1 class="title is-size-3">Clientes</h1>
     </div>
   </div>
 </section>
 
 <button class="button is-large is-link is-light">
-  <a href="/client/create">Add new Client</a>
+  <a href="/client/create">Agregar un Cliente</a>
   <span class="icon is-small">
     <i class="fas fa-user"></i>
   </span>
@@ -26,13 +26,13 @@
 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
   <tr>
     <th>Id</th>
-    <th>Name</th>
-    <th>LastName</th>
+    <th>Nombres</th>
+    <th>Apellidos</th>
     <th>DNI</th>
-    <th>Address</th>
-    <th>Phone Number</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
     <th>Email</th>
-    <th>Date of Birth</th>
+    <th>Fecha de Nacimiento</th>
   </tr>
   <tr>
     {% for client in data.clients %}
@@ -47,8 +47,8 @@
     <td>{{client.phone}}</td>
     <td>{{client.email}}</td>
     <td>{{client.birth}}</td>
-    <td><a href="/client/edit/{{client.id}}" class="button is-info is-fullwidth">Edit</a></td>
-    <td><a href="/client/delete/{{client.id}}" class="button is-danger is-fullwidth">Delete</a></td>
+    <td><a href="/client/edit/{{client.id}}" class="button is-info is-fullwidth">Editar</a></td>
+    <td><a href="/client/delete/{{client.id}}" class="button is-danger is-fullwidth">Borrar</a></td>
   </tr>
   {% endfor %}
 </table>
